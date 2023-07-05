@@ -1,0 +1,14 @@
+{
+  "name": "tienda",
+  "version": "0.0.0",
+  "description": "back proyecto tienda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamín Luzón Cáliz",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
