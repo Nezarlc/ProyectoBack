@@ -5,9 +5,13 @@ const NodeGeocoder = require('node-geocoder');
 
 const createToken = (usuario) => {
     const dataToken = {
-        usuario_id: usuario.id,
-        usuario_rol: usuario.rol,
+        id_usuario: usuario.id,
+        rol: usuario.rol,
         exp: dayjs().add(1, 'days').unix()
     }
-    return jwt.sign(dataToken, 'TFM Grupo D');
+    return jwt.sign(dataToken, 'Richar es gey');
 };
+
+module.exports = {
+    createToken
+}
