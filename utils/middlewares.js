@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { getById } = require('../models/usuario.model');
 
 const checkToken = async (req, res, next) => {
     //comprobamos si esta la cabecera authorization
@@ -10,9 +9,9 @@ const checkToken = async (req, res, next) => {
 
     //comprobamos si el token es válido
     try {
-        const dataToken = jwt.verify(token, 'TFM Grupo D');
-        const [usuario] = await getById(dataToken.usuario_id);
-        req.usuario = usuario[0];
+        const dataToken = jwt.verify(token, 'Richar es gey');
+        const [user] = await getById(dataToken.usuario_id);
+        req.user = user[0];
     } catch (error) {
         res.status(503).json({ Error: error.message });
     }
