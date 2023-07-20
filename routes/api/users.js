@@ -41,4 +41,26 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.post('/validate', async (req, res) => {
+    try {
+
+        const [result] = await getByEmail(req.body.token);
+        if (result.length === 0) {
+            return res.json('Error: email y/o contraseña no válidos')
+        }
+
+        const user = result[0];
+
+        const iguales = bcrypt.compareSync(req.body.password, user.password);//comparamos las contraseñas
+        if (!iguales) {
+            return res.json('Error: email y/o contraseña no válidos');
+        }
+
+        res.json({ validacion: true });
+
+    } catch (error) {
+        res.status(503).json({ Error: error.message });
+    }
+});
+
 module.exports = router;
